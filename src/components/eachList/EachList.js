@@ -32,23 +32,30 @@ const EachList = (props) => {
       }
 
         return (
-        <div className="el-wrapper"
-        id={props.id} 
-        onDragOver={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-          }}
-        onDrop={(event) => {
-            if (props.dragItem.parentId === props.id) {
-              return
-            } else {
-                props.dropCard(props.id)
-            }
-          }}>
-            <div className="el-header"><div className="el-text">{props.eachList.title}</div><span className="clickable" onClick={() =>  props.deleteList(props.id)}>x</span></div>
+        <div
+            className="el-wrapper"
+            id={props.id} 
+            onDragOver={(event) => {
+                event.stopPropagation();
+                event.preventDefault();
+            }}
+            onDrop={() => {
+                if (props.dragItem.parentId === props.id) {
+                  return
+                } else {
+                    props.dropCard(props.id)
+                }
+            }}>
+            <div className="el-header">
+                <div className="el-text">{props.eachList.title}</div>
+                <span className="clickable"
+                    onClick={() =>  props.deleteList(props.id)}>x
+                </span>
+            </div>
             <div className="ei-container">{props.eachList.item && props.eachList.item.map((item,index) => {
                 return <EachItem item={item} key={index} id={index} parentid={props.id} setDragItem={props.setDragItem} deleteItem={props.deleteItem}/>
-            })}<div  className="clickable" onClick={(e) => toggle(e,props.id) }> + add new item</div>
+            })}
+            <div  className="clickable" onClick={(e) => toggle(e,props.id) }> + add new item</div>
              {addBox ? 
              <div>
                  <input 

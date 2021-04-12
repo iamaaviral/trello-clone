@@ -8,8 +8,11 @@ const EachItem =(props) => {
       };
 
     return (
-    <div className="ei-wrapper" draggable="true" onDragStart={(e) => onDrag(props.id, props.parentid)}>
-        <div className=" close clickabke" onClick={() => props.deleteItem(props.id, props.parentid)}>x</div>
+    <div className="ei-wrapper"
+        draggable="true"
+        onDragStart={(e) => onDrag(props.id, props.parentid)}>
+        <div className=" close clickabke"
+            onClick={() => props.deleteItem(props.id, props.parentid)}>x</div>
         <div>{props.item.title}</div>
         <div>{props.item.desc}</div>
     </div>

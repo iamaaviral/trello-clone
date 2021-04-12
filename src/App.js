@@ -15,7 +15,6 @@ function App(props) {
       props.addList(e.target.value)
       toggle()
     }
- 
   } 
 
   return (
@@ -25,9 +24,10 @@ function App(props) {
           {props.data.map((eachList,index) => {
             return ContextHOC(EachList, {eachList: eachList, key: index, id: index})
           })}
-          <div className="add-list-btn clickable"><p  onClick={toggle}>+ Add another list</p> {addBox ? <input onKeyPress={(e) => submit(e)}/>: null}</div>
-          
-         
+          <div className="add-list-btn clickable">
+            <p  onClick={toggle}>+ Add another list</p> 
+            {addBox ? <input onKeyPress={(e) => submit(e)}/>: null}
+          </div>
       </div>
     </div>
   );
