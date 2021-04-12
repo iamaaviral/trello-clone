@@ -7,17 +7,17 @@ class BoardContext extends React.Component {
     super(props);
     this.state = {
             data: [
-                    // {title: 'name', 
-                    // item: [
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]},
-                    // {title: 'class',item: [
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]},
+                    {title: 'name', 
+                    item: [
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve'},
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve'},
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve'}
+                    ]},
+                    {title: 'class',item: [
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve'},
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve'},
+                        {title: 'title', desc: 'this is a description for the title mentioned abpve'}
+                    ]},
                     // {title: 'age', 
                     // item: [
                     //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
@@ -36,7 +36,13 @@ class BoardContext extends React.Component {
                     //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
                     //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
                     // ]}
-                ]
+                ],
+                addList: (value) => {
+                  console.log(value)
+                    this.setState({
+                      data: [...this.state.data, {title: value, item: []}]
+                    })
+                }
     };
   }
   render() {

@@ -6,7 +6,7 @@ const EachList = (props) => {
     return (
         <div className="el-wrapper">
             <div className="el-header"><div className="el-text">{props.title}</div></div>
-            <div className="ei-container">{props.items.map((item) => {
+            <div className="ei-container">{props.items && props.items.map((item) => {
                 return <EachItem item={item}/>
             })}</div>
         </div>

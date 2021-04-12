@@ -1,16 +1,33 @@
 import './App.scss';
+import React from 'react'
 import EachList from './components/eachList/EachList' 
 import { ContextHOC } from "./context";
 
 function App(props) {
+  const [addBox, showAddBox] =React.useState(false)
+
+  const toggle = () => {
+    showAddBox(!addBox)
+  }
+
+  const submit = (e) => {
+    if (e.key === "Enter" && e.target.value) {
+      props.addList(e.target.value)
+      toggle()
+    }
+ 
+  } 
+
   return (
     <div className="App">
-      <header style={{width: '100%'}}>Trello Board</header>
+      <header>Trello Board</header>
       <div className="body-container">
           {props.data.map(eachList => {
             return <EachList title={eachList.title} items={eachList.item}/>
           })}
-          <div class="add-btn"><p style={{flexShrink: 0}}>Add another list</p></div>
+          <div class="add-list-btn"><p  onClick={toggle}>Add another list</p> {addBox ? <input onKeyPress={(e) => submit(e)}/>: null}</div>
+          
+         
       </div>
     </div>
   );
