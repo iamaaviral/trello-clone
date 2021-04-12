@@ -1,7 +1,11 @@
 import React from "react";
 
 const Context = React.createContext();
-
+let dataItem = window.localStorage.getItem("data");
+const setCache = (data) => window.localStorage.setItem(
+  "data",
+  JSON.stringify(data)
+)
 class BoardContext extends React.Component {
   constructor(props) {
     super(props);
@@ -10,37 +14,7 @@ class BoardContext extends React.Component {
               id: -1,
               parentId: -1
             },
-            data: [
-                    // {title: 'name', 
-                    // item: [
-                    //     {title: 'title', desc: 'hu hadsushduashd asd asodaned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpve this is a description for the title mentioned abpve this is a description for the title mentioned abpvethis is a description for the title mentioned abpvethis is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a 2nd description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a 3rd description for the title mentioned abpve'}
-                    // ]},
-                    // {title: 'class',item: [
-                    //     {title: 'title', desc: 'this is a class 1st description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]},
-                    // {title: 'age', 
-                    // item: [
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]},
-                    // {title: 'haha',
-                    // item: [
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]},
-                    // {title: 'huhuhuhu',
-                    // item: [
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'},
-                    //     {title: 'title', desc: 'this is a description for the title mentioned abpve'}
-                    // ]}
-                ],
+            data: dataItem !== null ? JSON.parse(dataItem) : [],
                 setDragItem: (id, parentId) => {
                   this.setState({
                     dragItem: {
@@ -56,12 +30,12 @@ class BoardContext extends React.Component {
                   this.state.deleteItem(id, parentId)
                   this.setState({
                     data: allData
-                  })
+                  },() => setCache(this.state.data))
                 },
                 addList: (value) => {
                     this.setState({
                       data: [...this.state.data, {title: value, item: []}]
-                    })
+                    },() => setCache(this.state.data))
                     
                 },
                 deleteList: (key) => {
@@ -69,7 +43,7 @@ class BoardContext extends React.Component {
                   newData.splice(key, 1)
                   this.setState({
                     data: newData
-                  })
+                  },() => setCache(this.state.data))
                 }, 
                 addItem: (key, value) => {
                   const item = {
@@ -79,15 +53,15 @@ class BoardContext extends React.Component {
                   const newData = this.state.data
                   const allItems = this.state.data[key].item.concat([item]);
                   newData[key].item = allItems
-                  return Object.assign({}, this.state, {
-                    state: { newData, ...this.state },
-                  });
+                  this.setState({
+                    data: newData
+                  },() => setCache(this.state.data))
                 },
                 deleteItem: (id, parentId) => {
                   console.log(id, parentId)
                   const newData = this.state.data;
                   newData[parentId].item.splice(id,1)
-                  this.setState({data: newData})
+                  this.setState({data: newData},() => setCache(this.state.data))
                 }
     };
   }

@@ -16,4 +16,10 @@
     margin-bottom: 5px;
     padding: 5px;
     cursor: grab;
+    position: relative;
+    .close{
+        position: absolute;
+        right: 5%;
+        cursor: pointer;
+    }
 }

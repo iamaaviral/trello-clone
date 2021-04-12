@@ -13,20 +13,21 @@
     width: 99%;
     overflow-x: auto;
     flex-direction: row;
+    padding-bottom: 2%;
     .add-list-btn {
-      cursor: pointer;
       border-radius: 3px;
-      height: 36px;
       margin-left: 8px;
-      width: 270px;
-      padding-left: 10px;
-      padding-right: 10px;
+      min-width: 270px;
+      padding: 0 10px 10px 10px;
       opacity: 1;
       color: white;
         border-radius: 4px;
         background-color: #fff;
+        display: flex;
+        flex-flow: column nowrap;
       p{
-        margin-bottom: 0;
+        margin: 0;
+        height: 36px;
         color: black;
         background-color: rgba(0, 0, 0, 0.15); 
         box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 2px 1px -1px rgba(0,0,0,0.12);
