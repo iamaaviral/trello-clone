@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {BoardContext, Context} from './context'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BoardContext>
+      <Context.Consumer>{(val) => <App {...val} />}</Context.Consumer>
+    </BoardContext> 
   </React.StrictMode>,
   document.getElementById('root')
 );

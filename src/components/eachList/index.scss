@@ -1,0 +1,46 @@
+.el-wrapper {
+    border-radius: 6px;
+margin-left: 6px;
+margin-right: 6px;
+display: flex;
+flex-direction: column;
+align-self: auto;
+flex: 1 1 auto;
+min-width: 270px;
+max-width: 270px;
+background-color: rgb(244, 245, 247);
+.el-header {
+    display: flex;
+    flex-flow: column nowrap;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: stretch;
+    align-items: stretch;
+    align-self: auto;
+    height: 7%;
+    max-width: 100%;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    box-shadow:0px 1px 4px black;
+    padding: 5px;
+    .el-text {
+        max-width: calc(100% - 45px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+.ei-container {
+    overflow: auto;
+    height: 93%;
+    padding: 5px;
+    &::-webkit-scrollbar {
+        display: none;
+      }
+      
+      /* Hide scrollbar for IE, Edge and Firefox */
+      & {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+}
+}
