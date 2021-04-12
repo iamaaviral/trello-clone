@@ -22,10 +22,10 @@ function App(props) {
     <div className="App">
       <header>Trello Board</header>
       <div className="body-container">
-          {props.data.map(eachList => {
-            return <EachList title={eachList.title} items={eachList.item}/>
+          {props.data.map((eachList,index) => {
+            return ContextHOC(EachList, {eachList: eachList, key: index, id: index})
           })}
-          <div class="add-list-btn"><p  onClick={toggle}>Add another list</p> {addBox ? <input onKeyPress={(e) => submit(e)}/>: null}</div>
+          <div className="add-list-btn"><p  onClick={toggle}>Add another list</p> {addBox ? <input onKeyPress={(e) => submit(e)}/>: null}</div>
           
          
       </div>
