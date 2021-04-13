@@ -1,6 +1,6 @@
-# page-builder
+# trello-clone
 
-This repository contains the React implementation for the Page-builder app.
+This repository contains the React implementation for the trello-clone app.
 Access url: https://srivastavaaviral1.github.io/trello-clone/
 
 ## Getting Started
